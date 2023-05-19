@@ -8,6 +8,53 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="container1">
+      <h2 class="small_title">EVENTS IN PRAGUE</h2>
+
+      <nav class="menu_bar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="big__banner">
+      <div class="featured__event__container">
+        <h2 class="vertical__title">FEATURED EVENT</h2>
+        <img class="featured__event__image" src="https://wallpapers.com/images/featured/h9v8oske8iey8nkq.jpg"
+          alt="featured event">
+      </div>
+      
+      <div class="horizontal__titles__container">
+        <h2 class="horizontal__title">Event name</h2>
+        <h3 class="event__description">Event description...
+        </h3>
+        <button class="register-button">Register</button>
+      </div>
+      <!-- <button class="register-button">Register</button> -->
+    </div>
+    
+    <div class="container"></div>
+
+    <form id="form" action="/" class="off">
+      <fieldset>
+        <label for="fname">First name</label>
+        <input type="text" name="fname" id="fname" required /> <br />
+        <label for="lname">Last name</label>
+        <input type="text" name="lname" id="lname" required /> <br />
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" value="@" required /> <br />
+        <label for="number">Telephone number</label>
+        <input type="tel" name="number" id="number" required /> <br />
+        <section class="check">
+          <label for="checkage">I'm old enough to attend this event</label>
+          <input type="checkbox" name="checkage" id="checkage" required />
+        </section>
+        <button type="submit" class="register">Register</button>
+      </fieldset>
+    </form>
     <script type="module" src="/script.js"></script>
   </body>
 </html>
