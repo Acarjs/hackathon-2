@@ -15,9 +15,7 @@
     />
   </head>
   <body>
-    <div class="container"></div>
-
-    <form id="form" action="/" class="off">
+    <form id="form" action="/" class="form off">
       <fieldset>
         <label for="fname">First name</label>
         <input type="text" name="fname" id="fname" required /> <br />
@@ -26,8 +24,7 @@
         <input type="text" name="lname" id="lname" required /> <br />
 
         <label for="email">E-mail</label>
-
-        <input type="email" name="email" id="email" value="@" required /> <br />
+        <input type="email" name="email" id="email" value="" required /> <br />
 
         <label for="number">Telephone number</label>
         <input type="tel" name="number" id="number" required /> <br />
@@ -37,9 +34,10 @@
           <input type="checkbox" name="checkage" id="checkage" required />
         </section>
 
-        <button type="submit" class="register">Register</button>
+        <button type="button" class="register">Register</button>
       </fieldset>
     </form>
+    <div class="container"></div>
 
     <script type="module" src="/script.js"></script>
   </body>

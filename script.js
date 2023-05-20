@@ -1,5 +1,4 @@
 const container = document.querySelector('.container')
-
 const eventUrl = 'https://test-api.codingbootcamp.cz/api/7d2397f8/events'
 
 const getEvents = async () => {
@@ -15,7 +14,7 @@ const getEvents = async () => {
             <img src="${event.image_url}" class='event__img'>
             <div class='buttons'>
             <button class='btn'>More</button>
-            <button type="submit" class='register-btn'> <a href="#form" class='register__link'>Register</a> </button>
+            <button type="submit" class='register-btn'>Register</button>
             </div>
           
     <div class='description off'>
@@ -42,38 +41,40 @@ const getEvents = async () => {
 
   registerButtons.forEach((registerButton, index) => {
     registerButton.addEventListener('click', () => {
+      const buttonIndex = index + 1
       const form = document.getElementById('form')
       form.classList.remove('off')
+
+      const sendData = async (eventId) => {
+        const formRegistration = {
+          first_name: document.querySelector('input[name=fname]').value,
+          last_name: document.querySelector('input[name=lname]').value,
+          email: document.querySelector('input[name=email]').value,
+          number: document.querySelector('input[name=number]').value,
+        }
+        console.log(eventId)
+        const sendUrl = `https://test-api.codingbootcamp.cz/api/7d2397f8/events/${eventId}/registrations`
+        const registerUser = await fetch(sendUrl, {
+          method: 'POST',
+          body: JSON.stringify(formRegistration),
+          headers: { 'Content-type': 'application/json' },
+        })
+        const sentData = await registerUser.json()
+        console.log(sentData)
+        if (sentData.status === 'success') {
+          alert('Data sent successfully')
+        } else {
+          alert('Something went wrong!')
+        }
+      }
+
+      const sentButton = document.querySelector('.register')
+      sentButton.addEventListener('click', () => {
+        sendData(buttonIndex)
+        form.classList.add('off')
+      })
     })
   })
 }
 
 getEvents()
-
-const sendData = async () => {
-  const formRegistration = {
-    first_name: document.querySelector('input[name=fname]').value,
-    last_name: document.querySelector('input[name=lname]').value,
-    email: document.querySelector('input[name=email]').value,
-    number: document.querySelector('input[name=number]').value,
-  }
-
-  const eventId = 1
-  const sendUrl = `https://test-api.codingbootcamp.cz/api/7d2397f8/events/${eventId}/registrations`
-  const registerUser = await fetch(sendUrl, {
-    method: 'POST',
-    body: JSON.stringify(formRegistration),
-    headers: { 'Content-type': 'application/json' },
-  })
-  const sentData = await registerUser.json()
-  if (sentData.status === 'success') {
-    alert('Data sent successfully')
-  } else {
-    alert('Something went wrong!')
-  }
-}
-
-const sentButton = document.querySelector('.register')
-sentButton.addEventListener('click', () => {
-  sendData()
-})
